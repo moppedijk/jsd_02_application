@@ -1,0 +1,19 @@
+.footer {
+	overflow: hidden;
+
+	position: relative;
+	z-index: 2;
+
+	&__about {
+		float: right;
+		padding: 20px;
+
+		a {
+			color: #000;
+			text-decoration: none;
+			font-size: 16px;
+			font-weight: 500;
+			font-style: italic;
+		}
+	}
+}

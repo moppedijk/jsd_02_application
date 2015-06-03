@@ -1,0 +1,45 @@
+body {
+	// font-family: 'Lora', serif;
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+}
+
+// Reset
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+}
+
+input {
+	padding: 0;
+	margin: 0;
+	border: none;
+	background: transparent;
+
+	&:focus {
+		outline: 0;
+	}
+}
+
+p {
+	padding: 0;
+	margin: 0;
+}
+
+// Layout 
+
+.layout {
+
+	&__footer {
+		width: 100%;
+		position: fixed;
+		bottom: 0;
+	}
+}
+
+

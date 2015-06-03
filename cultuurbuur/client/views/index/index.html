@@ -1,0 +1,30 @@
+<template name="index">
+	<div class="index">
+		<div class="index__title">
+			<h2>{{title}}</h2>
+		</div>
+		<div class="index__form">
+			<div class="form">
+				<div class="form__inputholder">
+					<input class="form__input" id="input-city" placeholder="{{placeholder}}" />
+				</div>
+				<div class="form__hl">
+					<p>Of</p>
+				</div>
+				<div class="form__label form__label--gps">
+					<span>Maak gebruik van</span> <a class="form__btn form__btn" id="btn-gps" href="javascipt:void(0);">GPS</a>
+				</div>
+				<div class="form__hl">
+					<p>Wat zoek je?</p>
+				</div>
+				<div class="form__radiogroup">
+					<label><input type="radio" name="search-type" checked="checked"> Venues</label>
+					<label><input type="radio" name="search-type"> Events</label>
+				</div>
+				<div class="form__btnholder">
+					<a class="form__btn" id="btn-submit" href="javascript:void(0);">Klik en vind!</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

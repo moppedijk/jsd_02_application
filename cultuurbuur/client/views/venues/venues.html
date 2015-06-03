@@ -1,0 +1,11 @@
+<template name="venues">
+	<div class="venues">
+		<h2>Venues List</h2>
+		<a title="Haal me hier weg!" href="/index">Terug</a>
+		
+		{{#each venues}}
+			{{> venueListItem}}
+		{{/each}}
+
+	</div>
+</template>
