@@ -1,0 +1,72 @@
+.venueitem {
+	width: 70%;
+	margin: 0 auto;
+	padding: 20px;
+	border-bottom: solid 1px #000;
+	overflow: hidden;
+	opacity: 0;
+	transform: scaleY(.70);
+
+	transition-property: opacity margin-top scaleY;
+	transition-duration: .2s;
+
+	&--animatein {
+		opacity: 1;
+		transform: scaleY(1);
+	}
+
+	&__top {
+		overflow: hidden;
+	}
+
+	&__title {
+		width: 70%;
+		float: left;
+	}
+
+	&__openinghours {
+		width: 30%;
+		float: left;
+
+		p {
+			padding: 0px 5px;
+		}
+	}
+
+	&__bottom-left {
+		width: 70%;
+		float: left;
+	}
+
+	&__bottom-right {
+		width: 30%;
+		float: left;
+	}
+
+	&__link {
+		padding: 5px;
+
+		a {
+			background-color: #000;
+			color: #fff;
+			width: 100%;
+			text-align: center;
+			display: inline-block;
+			padding: 15px 0px;
+			text-decoration: none;
+		}
+	}
+
+	&__description {
+		padding: 5px 0px;
+	}
+
+	&__map {
+		display: inline-block;
+	}
+
+	&__website {
+		display: inline-block;
+		padding-right: 15px;
+	}
+}

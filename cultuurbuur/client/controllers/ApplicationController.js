@@ -5,5 +5,5 @@
  */
 
 ApplicationController = RouteController.extend({
-
+	
 });

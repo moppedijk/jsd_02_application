@@ -1,11 +1,18 @@
 <template name="venues">
 	<div class="venues">
-		<h2>Venues List</h2>
-		<a title="Haal me hier weg!" href="/index">Terug</a>
-		
-		{{#each venues}}
-			{{> venueListItem}}
-		{{/each}}
-
+		<div class="venues__header">
+			<div class="venues__breadcrumb">
+				{{> breadcrumb}}
+			</div>
+			<div class="venues__options">
+				<a href="javascript:void(0);" title="Resultaten in een list weergeven">list</a>
+				<a href="javascript:void(0);" title="Resultaten in een map weergeven">Map</a>
+			</div>
+		</div>
+		<div class="venues__content">
+			{{#each venues}}
+				{{> venueItem}}
+			{{/each}}
+		</div>
 	</div>
 </template>

@@ -17,7 +17,7 @@ Template.index.events({
 		console.log(inputVal);
 		
 		if(inputVal) {
-			Router.go('venues.list', {_id:1}, {query: 'q=s', hash: inputVal});
+			Router.go('venues.list', {_id:1}, {query: 'search=' + inputVal, hash: 'list' });
 		} else {
 			alert("Vul a.u.b. wat in");
 		}

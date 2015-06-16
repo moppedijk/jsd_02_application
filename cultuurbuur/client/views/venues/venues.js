@@ -1,13 +1,14 @@
 Template.venues.helpers({
-	content: 'Venues list',
-	venues: [
-		{name: 'Karel'},
-		{name: 'Appel'},
-		{name: 'Peter'},
-		{name: 'jan'}
-	]
+	venues: function() {
+		return Venues.find({});
+	},
+	locality: function() {
+		var controller = Iron.controller();
+
+		return controller.getLocality();
+	}
 });
 
 Template.venues.onRendered(function () {
-	
-})
+
+});

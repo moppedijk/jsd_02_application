@@ -32,9 +32,15 @@ Router.route('/about', {
 Router.route('/venues', {
 	name: 'venues.list',
 	controller: 'VenuesController'
-})
+});
+
+// Venue route
+Router.route('venues/detail/:cidn', {
+	name: 'venues.detail',
+	controller: 'VenuesDetailController'
+});
 
 // Redirect /
 Router.route('/', function() {
 	this.redirect('/index');
-})
+});
