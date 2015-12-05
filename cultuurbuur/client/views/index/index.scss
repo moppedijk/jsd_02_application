@@ -48,6 +48,21 @@ $color-dark: #595241;
 		color: $color-outstanding;
 	}
 
+	&__error {
+		display: none;
+
+		&-message {
+			padding: 15px 20px;
+			margin-bottom: 15px;
+			border: solid 1px $color-light;
+			color: $color-light;
+			font-weight: 500;
+		}
+		&--show {
+			display: block;
+		}
+	}
+
 	&__hl {
 		border-bottom: solid 1px $color-dark;
 		text-align: center;
@@ -77,6 +92,14 @@ $color-dark: #595241;
 		label {
 			width: 50%;
 			float: left;
+		}
+	}
+
+	&__radio {
+		margin-right: 10px;
+
+		&:focus {
+			color: #000;
 		}
 	}
 

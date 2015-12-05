@@ -12,8 +12,6 @@ IndexController = RouteController.extend({
 	// Calls index template with name "index" for the layout
 	template: 'index',
 
-	// data: function(){},
-
 	// Render action
 	action: function() {
 		this.render();

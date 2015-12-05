@@ -17,30 +17,30 @@ Router.configure({
 });
 
 // Index route
-Router.route('/index', {
-	name: 'index.show',
+Router.route('/', {
+	name: 'index',
 	controller: 'IndexController'
 });
 
 // About route
 Router.route('/about', {
-	name: 'about.show',
+	name: 'about',
 	controller: 'AboutController'
 });
 
 // Venue route
 Router.route('/venues', {
-	name: 'venues.list',
+	name: 'venues',
 	controller: 'VenuesController'
 });
 
 // Venue route
-Router.route('venues/detail/:cidn', {
-	name: 'venues.detail',
+Router.route('venue-detail/:cidn', {
+	name: 'venuesDetail',
 	controller: 'VenuesDetailController'
 });
 
 // Redirect /
-Router.route('/', function() {
-	this.redirect('/index');
-});
+// Router.route('/', function() {
+// 	this.redirect('/index');
+// });

@@ -5,24 +5,23 @@
 		</div>
 		<div class="index__form">
 			<div class="form">
+				<div class="form__error" id="error" visible-class="form__error--show">
+					<div class="form__error-message" id="errorMessage">
+						<p>{{errorMessage}}</p>
+					</div>
+				</div>
 				<div class="form__inputholder">
-					<input class="form__input" id="input-city" placeholder="{{placeholder}}" />
+					<input class="form__input" id="inputSearch" placeholder="{{placeholder}}" tabindex="1"/>
 				</div>
 				<div class="form__hl">
-					<p>Of</p>
-				</div>
-				<div class="form__label form__label--gps">
-					<span>Maak gebruik van</span> <a class="form__btn form__btn" id="btn-gps" href="javascipt:void(0);">GPS</a>
-				</div>
-				<div class="form__hl">
-					<p>Wat zoek je?</p>
+					<p>Waar ben je naar opzoek?</p>
 				</div>
 				<div class="form__radiogroup">
-					<label><input type="radio" name="search-type" checked="checked"> Venues</label>
-					<label><input type="radio" name="search-type"> Events</label>
+					<label><input type="radio" typeId="venues" class="form__radio" name="searchType" tabindex="2" checked >Lokaties</label>
+					<label><input type="radio" typeId="events" class="form__radio" name="searchType" tabindex="3">Evenementen</label>
 				</div>
 				<div class="form__btnholder">
-					<a class="form__btn" id="btn-submit" href="javascript:void(0);">Klik en vind!</a>
+					<a class="form__btn" id="btnSubmit" href="javascript:void(0);" tabindex="4">Klik en vind!</a>
 				</div>
 			</div>
 		</div>
