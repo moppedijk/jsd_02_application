@@ -119,6 +119,7 @@ Router.route( "/api/sparql/venues", { where: "server" } )
 					response.write( JSON.stringify( resultSet ) );
 				}
 
+				// End response object
 				response.end();
 			});
 
@@ -130,7 +131,9 @@ Router.route( "/api/sparql/venues", { where: "server" } )
 	});
 
 /*
- * Custom Api functions
+ * 	Custom Api functions
+ *	Create the perfect object for the client
+ * 	Helpers
 */
 
 var parseSparqlResult = function( result ) {
@@ -140,22 +143,28 @@ var parseSparqlResult = function( result ) {
 
 	for( var i = 0 ; i < resultSet.length ; i++ ) {
 		resultObj.push( { 
-			title: resultSet[ i ].title.value,
-			description: resultSet[ i ].description.value,
-			venue: resultSet[ i ].venue.value,
-			openinghours: resultSet[ i ].openingHours.value,
-			cidn: resultSet[ i ].cidn.value,
-			shortdescription: resultSet[ i ].shortdescription.value,
-			telephone: resultSet[ i ].telephone.value,
-			publictransportation: resultSet[ i ].publictransportation.value,
-			geolat: resultSet[ i ].geolat.value,
-			geolong: resultSet[ i ].geolong.value,
-			homepage: resultSet[ i ].homepage.value
+			title: 					resultSet[ i ].title.value,
+			description: 			resultSet[ i ].description.value,
+			venue: 					resultSet[ i ].venue.value,
+			openinghours: 			resultSet[ i ].openingHours.value,
+			cidn: 					resultSet[ i ].cidn.value,
+			shortdescription: 		resultSet[ i ].shortdescription.value,
+			telephone: 				resultSet[ i ].telephone.value,
+			publictransportation: 	resultSet[ i ].publictransportation.value,
+			geolat: 				resultSet[ i ].geolat.value,
+			geolong: 				resultSet[ i ].geolong.value,
+			homepage: 				resultSet[ i ].homepage.value
 		} );
 	}
 
 	return resultObj;
 }
+
+/**
+ *	Build sparql query
+ *	Function that get's an object with all the
+ *	details for building the right query string
+ */
 
 var buildSparqlQuery = function ( object ) {
 

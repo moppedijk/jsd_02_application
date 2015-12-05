@@ -4,7 +4,11 @@
 	If single venue type, us data in collection and add data from API
 */
 
+// Local collection
 Venues = new Meteor.Collection("venues");
+
+// User collection
+UserVenues = new Meteor.Collection('userVenues');
 
 // Venues Controller definition
 VenuesController = RouteController.extend({
@@ -78,12 +82,26 @@ VenuesController = RouteController.extend({
 				Venues._collection.insert(result.data[i]);
 			}
 
+
+			console.log(result);
+
 			// Loading done
 			console.log("loading done");
 			$("#loader").removeClass("loader--show");
 
 			return true;
 		}
+	},
+
+	/*
+	 *	Bind _local data with saved user data
+	*/
+	bindUserAndLocalData: function (localCollecion, userCollection) {
+		var collection = {};
+
+		// Map collections with each other
+
+		return collection;
 	},
 
 	/**
