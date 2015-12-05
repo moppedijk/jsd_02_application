@@ -107,8 +107,10 @@ Router.route( "/api/sparql/venues", { where: "server" } )
 				response.writeHead( 200, { "Content-Type": "application/json" } );
 
 				// Error handling
-				if(error)
+				if(error) {
+					console.log("Error!");
 					response.write( JSON.stringify( error ) );
+				}
 
 				// Result
 				if(result) {

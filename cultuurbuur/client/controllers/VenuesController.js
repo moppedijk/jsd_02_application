@@ -24,21 +24,10 @@ VenuesController = RouteController.extend({
 	},
 
 	/**
-	 * 	OnReRun
-	*/
-
-	onRerun: function () {
-		console.log("OnReRun");
-	},
-
-	/**
 	 * 	OnBeforeAction
 	*/
 	
 	onBeforeAction: function () {
-		console.log("onBeforeAction");
-		console.log("loading");
-
 		// Show loader
 		$("#loader").addClass("loader--show");
 

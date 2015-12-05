@@ -36,8 +36,8 @@ Router.route('/venues', {
 
 // Venue route
 Router.route('venue-detail/:cidn', {
-	name: 'venuesDetail',
-	controller: 'VenuesDetailController'
+	name: 'venueDetail',
+	controller: 'VenueDetailController'
 });
 
 // Redirect /
