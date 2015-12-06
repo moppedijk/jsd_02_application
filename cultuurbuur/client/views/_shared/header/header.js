@@ -4,5 +4,5 @@
 
 // Helpers
 Template.header.helpers({
-	title: "De Cultuurbuur"
+	title: "Fietsenstalling gezocht!"
 });

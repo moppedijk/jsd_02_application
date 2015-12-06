@@ -29,15 +29,15 @@ Router.route('/about', {
 });
 
 // Venue route
-Router.route('/venues', {
-	name: 'venues',
-	controller: 'VenuesController'
+Router.route('/cycles', {
+	name: 'cycles',
+	controller: 'CyclesController'
 });
 
 // Venue route
-Router.route('venue-detail/:cidn', {
-	name: 'venueDetail',
-	controller: 'VenueDetailController'
+Router.route('cycles-detail/:cidn', {
+	name: 'cyclesDetail',
+	controller: 'CyclesDetailController'
 });
 
 // Redirect /

@@ -5,22 +5,19 @@
 */
 
 // Local collection
-Venues = new Meteor.Collection("venues");
-
-// User collection
-UserVenues = new Meteor.Collection('userVenues');
+CyclesCollection = new Meteor.Collection("cycles");
 
 // Venues Controller definition
-VenuesController = RouteController.extend({
+CyclesController = RouteController.extend({
 	
 	layoutTemplate: 'layout',
 
-	template: 'venues',
+	template: 'cycles',
 
 	data: function () {
 
 		// Return the data from the collection
-		return Venues.find({});
+		return CyclesCollection.find({});
 	},
 
 	/**
@@ -36,11 +33,7 @@ VenuesController = RouteController.extend({
 
 		try {
 			// Try http request
-			var result = HTTP.get("/api/sparql/venues/", {
-				params: { 
-					locality: locality 
-				} 
-			}, this.requestCompleteHandler);
+			var result = HTTP.get("/api/cycle", this.requestCompleteHandler);
 
 		} catch (e) {
 			console.log(e);
@@ -65,17 +58,17 @@ VenuesController = RouteController.extend({
 
 		if(result) {
 
-			// // Push items in local collection
-			for(var i = 0; i < result.data.length; i++) {
-				console.log(result.data[i]);
-				Venues._collection.insert(result.data[i]);
+			var resultObj = JSON.parse(result.content);
+			var cycleObj = resultObj.Fietsenstallingen.Fietsenstalling;
+
+			// Push items in local collection
+			for(var i = 0; i < 10; i++) {
+				
+				console.log(cycleObj[i]);
+				CyclesCollection._collection.insert(cycleObj[i]);
 			}
 
-
-			console.log(result);
-
 			// Loading done
-			console.log("loading done");
 			$("#loader").removeClass("loader--show");
 
 			return true;

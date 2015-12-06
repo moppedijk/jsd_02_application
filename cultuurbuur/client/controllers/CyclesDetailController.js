@@ -1,10 +1,10 @@
-VenueDetailController = RouteController.extend({
+CyclesDetailController = RouteController.extend({
 	
 	// Calls layout template with name "layout"
 	layoutTemplate: 'layout',
 
 	// Calls venue template with name "venue" for the layout
-	template: 'venueDetail',
+	template: 'cyclesDetail',
 
 	data: function() {
 
@@ -16,13 +16,13 @@ VenueDetailController = RouteController.extend({
 	onBeforeAction: function () {
 
 		// Cal the server
-		Meteor.call('getVenue', this.params.cidn, function (error, result) {
-			if(result) {
-				console.log(result);
-			}
-			if(error)
-				alert(error);
-		}.bind(this) );
+		// Meteor.call('getVenue', this.params.cidn, function (error, result) {
+		// 	if(result) {
+		// 		console.log(result);
+		// 	}
+		// 	if(error)
+		// 		alert(error);
+		// }.bind(this) );
 
 		// Go to next rendering phase
 		this.next();

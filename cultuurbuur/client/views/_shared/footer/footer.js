@@ -1,3 +1,3 @@
 Template.footer.helpers({
-	title: "Over de Cultuurbuur"
+	title: "Over deze applicatie"
 })

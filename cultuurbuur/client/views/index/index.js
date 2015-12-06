@@ -4,12 +4,13 @@
 
 // When template is rendered
 Template.index.onRendered(function(){
+	// Focus on input
 	this.$('#inputSearch').focus();
 });
 
 // Helpers
 Template.index.helpers({
-	title: 'In welke buurt zoek je cultuur?',
+	title: 'Waar wil jij je fiets stallen?',
 	placeholder: 'Bijv. Amsterdam',
 	errorMessage: function() {
 		return Session.get('inputSearchError');
@@ -41,22 +42,9 @@ Template.index.showError = function(msg, template) {
 // Submit form event
 Template.index.onSubmitForm = function (template) {
 	var inputSearch = template.$('#inputSearch')[0].value;
-	var searchType = $('input:radio[name=searchType]:checked').attr('typeId');
 
 	if(inputSearch) {
-
-		switch(searchType) {
-			case 'venues':
-				Router.go('venues', {_id:1}, {query: 'search=' + inputSearch, hash: 'list' });
-				break;
-			case 'events':
-				Router.go('events', {_id:1}, {query: 'search=' + inputSearch, hash: 'list' });
-				break;
-			default:
-				alert("Something went wrong!");
-				break;
-		}
-
+		Router.go('cycles', {_id:1}, {query: 'search=' + inputSearch, hash: 'list' });
 	} else {
 		Template.index.showError('Vul a.u.b een stad in', template);
 	}
