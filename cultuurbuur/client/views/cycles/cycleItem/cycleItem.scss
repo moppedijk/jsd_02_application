@@ -4,11 +4,11 @@
 	padding: 20px;
 	border-bottom: solid 1px #000;
 	overflow: hidden;
-	// opacity: 0;
-	// transform: scaleY(.70);
+	opacity: 0;
+	transform: scaleY(.70);
 
-	// transition-property: opacity margin-top scaleY;
-	// transition-duration: .2s;
+	transition-property: opacity, margin-top, scaleY;
+	transition-duration: .2s;
 
 	&--animatein {
 		opacity: 1;
@@ -29,6 +29,7 @@
 		float: left;
 
 		p {
+			text-align: center;
 			padding: 0px 5px;
 		}
 	}

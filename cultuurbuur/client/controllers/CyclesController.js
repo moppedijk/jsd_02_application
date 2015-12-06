@@ -28,19 +28,31 @@ CyclesController = RouteController.extend({
 		// Show loader
 		$("#loader").addClass("loader--show");
 
+		// Get cycles page 0
+		this.getCycles(0);
+
+		// Go to next rendering phase
+		this.next();
+	},
+
+	getCycles:function(page) {
 		// Get params
 		var locality = this.params.query.search;
+		var pageCount = page;
 
 		try {
 			// Try http request
-			var result = HTTP.get("/api/cycle", this.requestCompleteHandler);
+			var result = HTTP.get("/api/cycle",{
+				params: {
+					perPage: 20,
+					page: pageCount,
+					city: locality
+				}
+			}, this.requestCompleteHandler);
 
 		} catch (e) {
 			console.log(e);
 		}
-
-		// Go to next rendering phase
-		this.next();
 	},
 
 	/**
@@ -59,13 +71,12 @@ CyclesController = RouteController.extend({
 		if(result) {
 
 			var resultObj = JSON.parse(result.content);
-			var cycleObj = resultObj.Fietsenstallingen.Fietsenstalling;
+			console.log(resultObj);	
 
 			// Push items in local collection
-			for(var i = 0; i < 10; i++) {
-				
-				console.log(cycleObj[i]);
-				CyclesCollection._collection.insert(cycleObj[i]);
+			for(var i = 0; i < resultObj.length; i++) {
+				console.log(resultObj[i]);
+				CyclesCollection._collection.insert(resultObj[i]);
 			}
 
 			// Loading done
@@ -75,30 +86,15 @@ CyclesController = RouteController.extend({
 		}
 	},
 
-	/*
-	 *	Bind _local data with saved user data
-	*/
-	bindUserAndLocalData: function (localCollecion, userCollection) {
-		var collection = {};
-
-		// Map collections with each other
-
-		return collection;
-	},
-
-	/**
-	 *	OnAfterAction
-	 */
-
-  	onAfterAction: function () {
-  		
-  	},
-
   	/**
   	 * Action
   	*/
 
 	action: function () {
 		this.render();
+	},
+
+	onStop: function () {
+		CyclesCollection._collection.remove({});
 	}
 });

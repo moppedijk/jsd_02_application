@@ -1,5 +1,5 @@
 Template.cycleItem.onRendered(function(){
 	setTimeout(function() {
-		$(this.firstNode).addClass('venueitem--animatein');
+		$(this.firstNode).addClass('cycleitem--animatein');
 	}.bind(this), 100);
 })
