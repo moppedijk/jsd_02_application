@@ -1,0 +1,16 @@
+<template name="map">
+	<div class="map">
+		<div class="map__header">
+			<div class="map__breadcrumb">
+				{{> breadcrumb}}
+			</div>
+			<div class="map__options">
+				<a href="javascript:void(0);" title="Resultaten in een lijst weergeven">lijst</a>
+				<a href="javascript:void(0);" title="Resultaten in een map weergeven">Map</a>
+			</div>
+		</div>
+		<div class="map__container">
+			{{> googleMap name="map" options=mapOptions}}
+		</div>
+	</div>
+</template>

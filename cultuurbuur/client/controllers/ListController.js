@@ -4,15 +4,12 @@
 	If single venue type, us data in collection and add data from API
 */
 
-// Local collection
-CyclesCollection = new Meteor.Collection("cycles");
-
 // Venues Controller definition
-CyclesController = RouteController.extend({
+ListController = RouteController.extend({
 	
 	layoutTemplate: 'layout',
 
-	template: 'cycles',
+	template: 'list',
 
 	data: function () {
 
@@ -39,6 +36,8 @@ CyclesController = RouteController.extend({
 		// Get params
 		var locality = this.params.query.search;
 		var pageCount = page;
+
+		console.log('getCycles');
 
 		try {
 			// Try http request
@@ -71,11 +70,9 @@ CyclesController = RouteController.extend({
 		if(result) {
 
 			var resultObj = JSON.parse(result.content);
-			console.log(resultObj);	
 
 			// Push items in local collection
 			for(var i = 0; i < resultObj.length; i++) {
-				console.log(resultObj[i]);
 				CyclesCollection._collection.insert(resultObj[i]);
 			}
 

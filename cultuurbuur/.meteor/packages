@@ -10,3 +10,4 @@ fourseven:scss
 iron:router
 http
 peerlibrary:xml2js
+dburles:google-maps

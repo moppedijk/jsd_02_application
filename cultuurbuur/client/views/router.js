@@ -10,6 +10,9 @@
  *	Reference: https://github.com/iron-meteor/iron-router
  */
 
+// Define local collection
+CyclesCollection = new Meteor.Collection("cycles");
+
 // Configuration
 Router.configure({
   	// Default Controller for the application
@@ -28,19 +31,20 @@ Router.route('/about', {
 	controller: 'AboutController'
 });
 
-// Venue route
-Router.route('/cycles', {
-	name: 'cycles',
-	controller: 'CyclesController'
+// List route
+Router.route('/list', {
+	name: 'list',
+	controller: 'ListController'
+});
+// List route
+Router.route('/map', {
+	name: 'map',
+	controller: 'MapController'
 });
 
-// Venue route
-Router.route('cycles-detail/:cidn', {
-	name: 'cyclesDetail',
-	controller: 'CyclesDetailController'
+// Detail route
+Router.route('detail/:cidn', {
+	name: 'detail',
+	controller: 'DetailController'
 });
 
-// Redirect /
-// Router.route('/', function() {
-// 	this.redirect('/index');
-// });

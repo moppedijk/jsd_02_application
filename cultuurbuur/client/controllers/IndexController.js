@@ -12,6 +12,14 @@ IndexController = RouteController.extend({
 	// Calls index template with name "index" for the layout
 	template: 'index',
 
+	onBeforeAction: function () {
+		// Show loader
+		$("#loader").addClass("loader--show");
+
+		// Go to next rendering phase
+		this.next();
+	},
+
 	// Render action
 	action: function() {
 		this.render();

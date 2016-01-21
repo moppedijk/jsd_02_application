@@ -1,4 +1,4 @@
-.cycleitem {
+.listitem {
 	width: 70%;
 	margin: 0 auto;
 	padding: 20px;
@@ -9,6 +9,7 @@
 
 	transition-property: opacity, margin-top, scaleY;
 	transition-duration: .2s;
+	transition-timing-function: ease-in-out;
 
 	&--animatein {
 		opacity: 1;

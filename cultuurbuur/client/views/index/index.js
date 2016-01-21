@@ -6,6 +6,9 @@
 Template.index.onRendered(function(){
 	// Focus on input
 	this.$('#inputSearch').focus();
+	// Remove loader
+	$("#loader").removeClass("loader--show");
+	$("#index").addClass("index--animatein");
 });
 
 // Helpers
@@ -42,9 +45,20 @@ Template.index.showError = function(msg, template) {
 // Submit form event
 Template.index.onSubmitForm = function (template) {
 	var inputSearch = template.$('#inputSearch')[0].value;
+	var searchType = $('input:radio[name=searchType]:checked').attr('typeId');
 
 	if(inputSearch) {
-		Router.go('cycles', {_id:1}, {query: 'search=' + inputSearch, hash: 'list' });
+		switch(searchType) {
+			case 'list':
+				Router.go('list', {_id:1}, {query: 'search=' + inputSearch});
+				break;
+			case 'map':
+				Router.go('map', {_id:1}, {query: 'search=' + inputSearch});
+				break;
+			default:
+				alert("Something went wrong!");
+				break;
+		}
 	} else {
 		Template.index.showError('Vul a.u.b een stad in', template);
 	}

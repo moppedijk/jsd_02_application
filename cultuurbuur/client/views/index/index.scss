@@ -35,6 +35,10 @@ $color-dark: #595241;
 		padding: 20px;
 		background-color: $color-extra;
 	}
+
+	&--animatein {
+		-webkit-animation:bounce .5s ease-in-out;
+	}
 }
 
 /* =====================================
@@ -117,4 +121,11 @@ $color-dark: #595241;
 		text-align: right;
 		padding-top: 15px;
 	}
+}
+
+@keyframes bounce {
+   0% { opacity:0; transform:translateY(-800px); }
+   60% { opacity:1; transform:translateY(25px); }
+   80% { transform:translateY(-8px); opacity:.8; }
+   100% { transform:translateY(0); }
 }

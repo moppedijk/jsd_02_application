@@ -1,10 +1,10 @@
-Template.cycles.helpers({
+Template.list.helpers({
 	cycles: function() {
 		return CyclesCollection.find({});
 	}
 });
 
-Template.cycles.onRendered(function () {
+Template.list.onRendered(function () {
 	
 	// Create breadcrumb
 	var breadcrumb = [
@@ -15,8 +15,13 @@ Template.cycles.onRendered(function () {
 		},
 		{
 			name: 'Fietsenstallingen',
-			href: '/cycles',
+			href: '/list',
 			title: 'Zoeken naar fietsenstallingen'
+		},
+		{
+			name: 'List',
+			href: '/list',
+			title: 'Overzicht in lijst'
 		}
 	];
 

@@ -1,10 +1,10 @@
-CyclesDetailController = RouteController.extend({
+DetailController = RouteController.extend({
 	
 	// Calls layout template with name "layout"
 	layoutTemplate: 'layout',
 
 	// Calls venue template with name "venue" for the layout
-	template: 'cyclesDetail',
+	template: 'detail',
 
 	data: function() {
 

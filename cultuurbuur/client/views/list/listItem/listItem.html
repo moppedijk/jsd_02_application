@@ -1,0 +1,30 @@
+<template name="listItem">
+	<div class="listitem">
+		<div class="listitem__top">
+			<div class="listitem__title">
+				<h3>{{name}}</h3>
+			</div>
+			<div class="listitem__openinghours">
+				<p>{{type}}</p>
+			</div>
+		</div>
+		<div class="listitem__bottom-left">
+			<div class="listitem__description">
+				<p>{{street}}</p>
+				<p>{{zipcode}}</p>
+				<p>{{city}}</p>
+			</div>
+			<div class="listitem__website">
+				<a href="{{homepage}}" target="_blank" title="Meer info (extern)">Meer info (extern)</a>
+			</div>
+			<div class="listitem__map">
+				<a href="/map/" title="Bekijk {{name}} op de map">Map</a>
+			</div>
+		</div>
+		<div class="listitem__bottom-right">
+			<div class="listitem__link">
+				<a href="/detail/{{id}}" title="Link naar detail pagina">Detail pagina</a>
+			</div>
+		</div>
+	</div>
+</template>

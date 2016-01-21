@@ -30,6 +30,7 @@ Router.route( "/api/cycle", { where: "server" } )
 		                    if( jsError ){
 		                        response.write( JSON.stringify( jsError ));
 		                    }else {
+		                    	// Store data in session
 		                    	var parsedResult = parseResult( jsResult, params );
 
 		                    	if(parsedResult) {
@@ -116,7 +117,10 @@ var parseResult = function (result, params) {
 
 				// Coordinaten
 				if (subObj[i].Coordinaten) {
-					cycleObj.coordinates = subObj[i].Coordinaten;
+					var coordinates = subObj[i].Coordinaten;
+					var string = coordinates.split(/,/);
+
+					cycleObj.coordinates = string;
 				} else {
 					cycleObj.coordinates = false;
 				}

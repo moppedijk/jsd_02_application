@@ -1,17 +1,17 @@
-<template name="cycles">
-	<div class="cycles">
-		<div class="cycles__header">
-			<div class="cycles__breadcrumb">
+<template name="list">
+	<div class="list">
+		<div class="list__header">
+			<div class="list__breadcrumb">
 				{{> breadcrumb}}
 			</div>
-			<div class="cycles__options">
+			<div class="list__options">
 				<a href="javascript:void(0);" title="Resultaten in een lijst weergeven">lijst</a>
 				<a href="javascript:void(0);" title="Resultaten in een map weergeven">Map</a>
 			</div>
 		</div>
-		<div class="cycles__content">
+		<div class="list__content">
 			{{#each cycles}}
-				{{> cycleItem}}
+				{{> listItem}}
 			{{/each}}
 		</div>
 	</div>
