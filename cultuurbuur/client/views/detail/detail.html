@@ -1,0 +1,35 @@
+<template name="detail">
+	<div class="detail">
+		<div class="detail__header">
+			<div class="detail__breadcrumb">
+				{{> breadcrumb}}
+			</div>
+			<div class="detail__options">
+				{{> filterOptions}}
+			</div>
+		</div>
+		<div class="detail__content">
+			{{#each cycles}}
+				<h1>name: {{name}}</h1>
+				<p>description: {{description}}</p>
+				<p>id: {{id}}</p>
+				<p>administrator: {{administrator}}</p>
+				<p>administratorContact: {{administratorContact}}</p>
+				<p>capacityBike: {{capacityBike}}</p>
+				<p>capacityTotal: {{capacityTotal}}</p>
+				<p>capacityTotal: {{capacityTotal}}</p>
+				<p>congregation: {{congregation}}</p>
+				<p>openinghours: {{openinghours}}</p>
+				<p>city: {{city}}</p>
+				<p>zipcode: {{zipcode}}</p>
+				<p>stationHousing: {{stationHousing}}</p>
+				<p>street: {{street}}</p>
+				<p>accesControl: {{accesControl}}</p>
+				<p>type: {{type}}</p>
+				<p>homepage: {{homepage}}</p>
+				<p>referral: {{referral}}</p>
+				<p>services: {{services}}</p>
+			{{/each}}
+		</div>
+	</div>
+</template>

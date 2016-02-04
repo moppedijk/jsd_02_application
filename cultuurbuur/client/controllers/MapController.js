@@ -11,8 +11,6 @@ MapController = ApplicationController.extend({
 	template: 'map',
 
 	data: function () {
-
-		// Return the data from the collection
 		return CyclesCollection.find({});
 	},
 
@@ -24,9 +22,8 @@ MapController = ApplicationController.extend({
 		// Show loader
 		$("#loader").addClass("loader--show");
 
-		// Get cycles page 0
 		// in ApplicationController
-		this.getCycles(0);
+		this.getCycles();
 
 		// Go to next rendering phase
 		this.next();

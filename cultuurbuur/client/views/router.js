@@ -43,7 +43,7 @@ Router.route('/map', {
 });
 
 // Detail route
-Router.route('detail/:cidn', {
+Router.route('detail/:id', {
 	name: 'detail',
 	controller: 'DetailController'
 });

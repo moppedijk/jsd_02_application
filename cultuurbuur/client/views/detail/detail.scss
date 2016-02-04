@@ -1,4 +1,4 @@
-.venuedetail {
+.detail {
 
 	&__header {
 		overflow: hidden;
@@ -16,5 +16,17 @@
 
 	&__breadcrumb {
 		float: left;
+	}
+
+	&__options {
+		float: right;
+		overflow: hidden;
+
+		a {
+			text-decoration: none;
+			padding: 5px 15px;
+			color: #000;
+			float: right;
+		}
 	}
 }

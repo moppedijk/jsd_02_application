@@ -1,4 +1,4 @@
-DetailController = RouteController.extend({
+DetailController = ApplicationController.extend({
 	
 	// Calls layout template with name "layout"
 	layoutTemplate: 'layout',
@@ -7,9 +7,6 @@ DetailController = RouteController.extend({
 	template: 'detail',
 
 	data: function() {
-
-		// Find the document in local collection by id
-		// Todo: check if data is undefined
 		return CyclesCollection.find({});
 	},
 
@@ -17,13 +14,34 @@ DetailController = RouteController.extend({
 		// Show loader
 		$("#loader").addClass("loader--show");
 
+		this.getCycle();
+
 		// Go to next rendering phase
 		this.next();
 	},
 
+	requestCompleteHandler: function(error, result) {
+		if(error) {
+			throw error;
+		}
+
+		if(result) {
+			var resultObj = JSON.parse(result.content);
+
+			// Add first object to collection
+			CyclesCollection._collection.insert(resultObj[0]);
+
+			// Loading done
+			$("#loader").removeClass("loader--show");
+		}
+	},
+
 	// Render action
 	action: function() {
-		$("#loader").removeClass("loader--show");
 		this.render();
+	},
+
+	onStop: function () {
+		CyclesCollection._collection.remove({});
 	}
 });

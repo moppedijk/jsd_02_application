@@ -5,10 +5,9 @@
  */
 
 ApplicationController = RouteController.extend({
-	getCycles:function(page) {
+	getCycles:function() {
 		// Get params
 		var locality = this.params.query.search;
-		var pageCount = page;
 
 		// Set search query in session
 		Session.set('inputSearch', locality);
@@ -27,7 +26,20 @@ ApplicationController = RouteController.extend({
 			console.log(e);
 		}
 	},
-	getCycle:function(id) {
+	getCycle:function() {
+		var cycleId = this.params.id;
 
+		// Set detail id in session
+		Session.set('detailId', cycleId);
+
+		try {
+			// Try http request
+			var result = HTTP.get("/api/cycles/" + cycleId, {}, function (error, result) {
+				this.requestCompleteHandler(error, result);
+			}.bind(this));
+
+		} catch (e) {
+			console.log(e);
+		}
 	}
 });
