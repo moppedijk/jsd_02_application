@@ -14,11 +14,6 @@ Template.detail.onRendered(function () {
 			title: 'Terug naar zoeken'
 		},
 		{
-			name: 'Fietsenstallingen',
-			href: '/list',
-			title: 'Zoeken naar fietsenstallingen'
-		},
-		{
 			name: 'Detail',
 			href: '/detail',
 			title: 'Detail pagina van'

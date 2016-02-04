@@ -23,7 +23,7 @@ MapController = ApplicationController.extend({
 		$("#loader").addClass("loader--show");
 
 		// in ApplicationController
-		this.getCycles();
+		this.getCyclesByLocality(this.params.query.search);
 
 		// Go to next rendering phase
 		this.next();

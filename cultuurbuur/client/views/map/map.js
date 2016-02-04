@@ -12,7 +12,7 @@ Template.map.helpers({
 });
 
 Template.map.onRendered(function () {
-	
+	var city = Session.get('inputSearch');
 	// Create breadcrumb
 	var breadcrumb = [
 		{
@@ -21,16 +21,11 @@ Template.map.onRendered(function () {
 			title: 'Terug naar zoeken'
 		},
 		{
-			name: 'Fietsenstallingen',
-			href: '/list',
-			title: 'Zoeken naar fietsenstallingen'
-		},
-		{
-			name: 'Map',
-			href: '/map',
-			title: 'Overzicht in lijst'
+			name: city,
+			href: '/map?search=' + city,
+			title: city
 		}
 	];
-
+	// Set breadcrumb in session
 	Session.set('breadcrumb', breadcrumb);
 });

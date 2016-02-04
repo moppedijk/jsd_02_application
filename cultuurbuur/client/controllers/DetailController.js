@@ -14,7 +14,7 @@ DetailController = ApplicationController.extend({
 		// Show loader
 		$("#loader").addClass("loader--show");
 
-		this.getCycle();
+		this.getCyclesById(this.params.id);
 
 		// Go to next rendering phase
 		this.next();
@@ -30,6 +30,10 @@ DetailController = ApplicationController.extend({
 
 			// Add first object to collection
 			CyclesCollection._collection.insert(resultObj[0]);
+
+			if(!Session.get('inputSearch')) {
+				Session.set('inputSearch', resultObj[0].city.toLowerCase());
+			}
 
 			// Loading done
 			$("#loader").removeClass("loader--show");

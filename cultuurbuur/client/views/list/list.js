@@ -5,7 +5,7 @@ Template.list.helpers({
 });
 
 Template.list.onRendered(function () {
-	
+	var city = Session.get('inputSearch');
 	// Create breadcrumb
 	var breadcrumb = [
 		{
@@ -14,16 +14,11 @@ Template.list.onRendered(function () {
 			title: 'Terug naar zoeken'
 		},
 		{
-			name: 'Fietsenstallingen',
-			href: '/list',
-			title: 'Zoeken naar fietsenstallingen'
-		},
-		{
-			name: 'List',
-			href: '/list',
-			title: 'Overzicht in lijst'
+			name: city,
+			href: '/list?search=' + city,
+			title: city
 		}
 	];
-
+	// Set breadcrumb in session
 	Session.set('breadcrumb', breadcrumb);
 });
