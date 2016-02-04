@@ -44,7 +44,7 @@ Template.index.showError = function(msg, template) {
 
 // Submit form event
 Template.index.onSubmitForm = function (template) {
-	var inputSearch = template.$('#inputSearch')[0].value;
+	var inputSearch = template.$('#inputSearch')[0].value.toLowerCase();
 	var searchType = $('input:radio[name=searchType]:checked').attr('typeId');
 
 	if(inputSearch) {

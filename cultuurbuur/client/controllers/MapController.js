@@ -4,7 +4,7 @@
 	https://github.com/dburles/meteor-google-maps#api
 */
 
-MapController = RouteController.extend({
+MapController = ApplicationController.extend({
 	
 	layoutTemplate: 'layout',
 
@@ -25,30 +25,11 @@ MapController = RouteController.extend({
 		$("#loader").addClass("loader--show");
 
 		// Get cycles page 0
+		// in ApplicationController
 		this.getCycles(0);
 
 		// Go to next rendering phase
 		this.next();
-	},
-
-	getCycles:function(page) {
-		// Get params
-		var locality = this.params.query.search;
-		var pageCount = page;
-
-		try {
-			// Try http request
-			var result = HTTP.get("/api/cycle",{
-				params: {
-					perPage: 20,
-					page: pageCount,
-					city: locality
-				}
-			}, this.requestCompleteHandler);
-
-		} catch (e) {
-			console.log(e);
-		}
 	},
 
 	/**
@@ -60,33 +41,108 @@ MapController = RouteController.extend({
 		// Error handling
 		if(error){
 			console.log(error);
-
-			return true;
 		}
 
 		if(result) {
-
 			var resultObj = JSON.parse(result.content);
 
-			// Check this
 			// if there is no coordinates
+			// set latng in session
 			Session.set('latLng', resultObj[0].coordinates);
 
-			// // Push items in local collection
+			// Push items in local collection
 			for(var i = 0; i < resultObj.length; i++) {
 				// Only documents with coordinates
 				if (resultObj[i].coordinates)
 					CyclesCollection._collection.insert(resultObj[i]);
 			}
 
-			// Load Google map
-			GoogleMaps.load();
-
-			// Loading done
-			$("#loader").removeClass("loader--show");
-
-			return true;
+			// Load map
+			this.loadMap();
 		}
+	},
+
+	loadMap: function () {
+		// Load Google map
+		GoogleMaps.load({
+			// add load options
+			v: '3', 
+			key: 'AIzaSyCtKqFdKMD9Fn99HVDIudRbE3pQMIFbKm8',
+			libraries: 'geometry, places'
+		});
+
+		// Google map ready listener
+		GoogleMaps.ready('map', function(map) {
+			this.mapReady(map);
+		}.bind(this));
+	},
+
+	mapReady: function(map) {
+		// Get all cycles for map
+		var cycles = CyclesCollection.find({});
+		// Create empty LatLngBounds object
+		var bounds = new google.maps.LatLngBounds();
+		// Create count variable
+		var count = 0;
+
+		// Loop trough collection and create markers
+		cycles.forEach(function(row) {
+			var mapPosition = new google.maps.LatLng(row.coordinates[1], row.coordinates[0]);
+			// Extend the bounds to include each marker's position
+			bounds.extend(mapPosition);
+			// Add marker
+			this.addMarker({
+				position: mapPosition, 
+				timeout: count * 50, 
+				map: map,
+				cycleData: row
+			});
+
+			count++;
+
+		}.bind(this));
+
+		// Fit the map to the newly inclusive bounds
+		map.instance.fitBounds(bounds);
+
+		// Loading done
+		$("#loader").removeClass("loader--show");
+	},
+
+	addMarker: function(options) {
+		var infowindow = new google.maps.InfoWindow({
+			content: this.generateInfoWindowContent(options.cycleData),
+			maxWidth: 200
+		});
+		// setTimeout adding marker
+		window.setTimeout(function() {
+			// create marker
+			var marker = new google.maps.Marker({
+				position: options.position,
+				map: options.map.instance,
+				animation: google.maps.Animation.DROP
+			});
+
+			marker.addListener('click', function() {
+				infowindow.open(options.map.instance, marker);
+			});
+
+		}, options.timeout);
+	},
+
+	generateInfoWindowContent: function (cycleData) {
+		var html = "<div>";
+			html+= "<h3>" + cycleData.name + "</h3>";
+			html+= "<div><p>type: " + cycleData.type + "</p></div>";
+			html+= "<div><p>street: " + cycleData.street + "</p></div>";
+			html+= "<div><p>zipcode: " + cycleData.zipcode + "</p></div>";
+			html+= "<div><p>city: " + cycleData.city + "</p></div>";
+			html+= "<div><p><a href=\"/detail/" + cycleData.id + "\"/>detail</a></p></div>";
+
+			// End div
+			html+= "<div>";
+
+		return html;
 	},
 
   	/**
@@ -102,5 +158,6 @@ MapController = RouteController.extend({
 		delete Session.keys['latLng']
 		// empty collection
 		CyclesCollection._collection.remove({});
+		// unload google map
 	}
 });

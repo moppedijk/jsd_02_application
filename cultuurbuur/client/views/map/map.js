@@ -11,12 +11,6 @@ Template.map.helpers({
 	}
 });
 
-Template.map.onCreated(function() {  
-	GoogleMaps.ready('map', function(map) {
-	 	console.log("I'm ready!");
-	});
-});
-
 Template.map.onRendered(function () {
 	
 	// Create breadcrumb

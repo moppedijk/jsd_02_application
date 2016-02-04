@@ -4,8 +4,8 @@
 	If single venue type, us data in collection and add data from API
 */
 
-// Venues Controller definition
-ListController = RouteController.extend({
+// List Controller definition
+ListController = ApplicationController.extend({
 	
 	layoutTemplate: 'layout',
 
@@ -26,32 +26,11 @@ ListController = RouteController.extend({
 		$("#loader").addClass("loader--show");
 
 		// Get cycles page 0
+		// in ApplicationController
 		this.getCycles(0);
 
 		// Go to next rendering phase
 		this.next();
-	},
-
-	getCycles:function(page) {
-		// Get params
-		var locality = this.params.query.search;
-		var pageCount = page;
-
-		console.log('getCycles');
-
-		try {
-			// Try http request
-			var result = HTTP.get("/api/cycle",{
-				params: {
-					perPage: 20,
-					page: pageCount,
-					city: locality
-				}
-			}, this.requestCompleteHandler);
-
-		} catch (e) {
-			console.log(e);
-		}
 	},
 
 	/**
@@ -63,8 +42,6 @@ ListController = RouteController.extend({
 		// Error handling
 		if(error){
 			console.log(error);
-
-			return true;
 		}
 
 		if(result) {
@@ -78,8 +55,6 @@ ListController = RouteController.extend({
 
 			// Loading done
 			$("#loader").removeClass("loader--show");
-
-			return true;
 		}
 	},
 

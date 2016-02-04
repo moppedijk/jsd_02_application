@@ -10,19 +10,12 @@ DetailController = RouteController.extend({
 
 		// Find the document in local collection by id
 		// Todo: check if data is undefined
-		return Venues.findOne( { cidn: this.params.cidn });
+		return CyclesCollection.find({});
 	},
 
 	onBeforeAction: function () {
-
-		// Cal the server
-		// Meteor.call('getVenue', this.params.cidn, function (error, result) {
-		// 	if(result) {
-		// 		console.log(result);
-		// 	}
-		// 	if(error)
-		// 		alert(error);
-		// }.bind(this) );
+		// Show loader
+		$("#loader").addClass("loader--show");
 
 		// Go to next rendering phase
 		this.next();
@@ -30,6 +23,7 @@ DetailController = RouteController.extend({
 
 	// Render action
 	action: function() {
+		$("#loader").removeClass("loader--show");
 		this.render();
 	}
 });
