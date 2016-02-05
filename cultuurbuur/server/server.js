@@ -12,26 +12,35 @@ Router.route( "/api/cycles", { where: "server" } ).get( function() {
 	var response = this.response;
 
 	try {
-		HTTP.get( 'http://www.veiligstallen.nl/veiligstallen.xml', {}, fetchCyclesComplete );
+		HTTP.get( 'http://www.veiligstallen.nl/veiligstallen.xml', {}, onFetchCyclesComplete );
 	} catch ( error ) {
-		errorResponse( error );
+		errorResponse({
+			message: "Something went wrong...",
+			error: error
+		});
 	}
 
-	function fetchCyclesComplete(error, response) {
+	function onFetchCyclesComplete(error, response) {
 	    if(error) {
-	    	errorResponse( error );
+			errorResponse({
+				message: "Something went wrong...",
+				error: error
+			});
 	    } else {
 	        xml2js.parseString( response.content, {
 	        	explicitArray: false, 
 	        	emptyTag: undefined
-	        	}, xmlToJsComplete
+	        	}, onXmlToJsComplete
 	    	);
 		};
 	}
 
-	function xmlToJsComplete(error, result) {
+	function onXmlToJsComplete(error, result) {
 	    if( error ){
-	    	errorResponse( error );
+			errorResponse({
+				message: "Something went wrong...",
+				error: error
+			});
 	    } else {
 	    	findObjectsByLocality( result );
 	    };
@@ -59,10 +68,19 @@ Router.route( "/api/cycles", { where: "server" } ).get( function() {
 			response.end();
 		} else {
 			errorResponse({
-				message: "Something went wrong, no matiching id found"
+				message: "Something went wrong, " + params.city + " not found!";
 			});
 		};
 	};
+
+	function errorResponse ( error ) {
+		// Response content-type is JSON
+		response.writeHead(400, {'Content-type': 'application/json'});
+		// Response write
+	    response.write( JSON.stringify( error ));
+	    // Response end
+		response.end();
+	}
 
 	function cleanUpString( string ) {
 		return string.toLowerCase().replace(/\-/g,' ');
@@ -82,26 +100,35 @@ Router.route( "/api/cycles/:id", { where: "server" } ).get( function() {
 	var response = this.response;
 
 	try {
-		HTTP.get( 'http://www.veiligstallen.nl/veiligstallen.xml', {}, fetchCyclesComplete );
+		HTTP.get( 'http://www.veiligstallen.nl/veiligstallen.xml', {}, onFetchCyclesComplete );
 	} catch ( error ) {
-		errorResponse( error );
+		errorResponse({
+			message: "Something went wrong...",
+			error: error
+		});
 	}
 
-	function fetchCyclesComplete(error, response) {
+	function onFetchCyclesComplete(error, response) {
 	    if(error) {
-	    	errorResponse( error );
+			errorResponse({
+				message: "Something went wrong...",
+				error: error
+			});
 	    } else {
 	        xml2js.parseString( response.content, {
 	        	explicitArray: false, 
 	        	emptyTag: undefined
-	        	}, xmlToJsComplete
+	        	}, onXmlToJsComplete
 	    	);
 		};
 	}
 
-	function xmlToJsComplete(error, result) {
+	function onXmlToJsComplete(error, result) {
 	    if( error ){
-	    	errorResponse( error );
+			errorResponse({
+				message: "Something went wrong...",
+				error: error
+			});
 	    } else {
 	    	findObjectById( result );
 	    };
@@ -126,10 +153,19 @@ Router.route( "/api/cycles/:id", { where: "server" } ).get( function() {
 			response.end();
 		} else {
 			errorResponse({
-				message: "Something went wrong, no matiching id found"
+				message: "Something went wrong, no match with id: " + cycleId + " found";
 			});
 		};
 	};
+
+	function errorResponse ( error ) {
+		// Response content-type is JSON
+		response.writeHead(400, {'Content-type': 'application/json'});
+		// Response write
+	    response.write( JSON.stringify( error ));
+	    // Response end
+		response.end();
+	}
 });
 
 /* ==========================================================================
@@ -284,13 +320,4 @@ function refactorObjectKeys (result) {
 	} else {
 		return false;
 	}
-}
-
-function errorResponse ( error ) {
-	// Response content-type is JSON
-	response.writeHead(200, {'Content-type': 'application/json'});
-	// Response write
-    response.write( JSON.stringify( error ));
-    // Response end
-	response.end();
 }

@@ -16,7 +16,8 @@ CyclesCollection = new Meteor.Collection("cycles");
 // Configuration
 Router.configure({
   	// Default Controller for the application
-  	controller: 'ApplicationController'
+  	controller: 'ApplicationController',
+  	notFoundTemplate: 'notFound',
 });
 
 // Index route
@@ -48,3 +49,8 @@ Router.route('detail/:id', {
 	controller: 'DetailController'
 });
 
+// Error route
+Router.route('error', {
+	name: 'error',
+	controller: 'ErrorController'
+});

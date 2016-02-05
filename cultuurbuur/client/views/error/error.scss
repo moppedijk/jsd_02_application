@@ -1,0 +1,23 @@
+/* =====================================
+	INDEX
+	================================== */
+
+.error {
+	&__header {
+		overflow: hidden;
+		padding-bottom: 20px;
+		padding-left: 20px;
+		padding-right: 20px;
+		border-bottom: solid 1px #000;
+	}
+
+	&__content {
+		max-width: 940px;
+		margin: 0 auto;
+		margin-bottom: 60px;
+	}
+
+	&__breadcrumb {
+		float: left;
+	}
+}

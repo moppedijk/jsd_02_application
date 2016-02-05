@@ -21,11 +21,15 @@ DetailController = ApplicationController.extend({
 	},
 
 	requestCompleteHandler: function(error, result) {
-		if(error) {
-			throw error;
-		}
 
 		if(result) {
+
+			if(result.statusCode == 400) {
+				var resultObj = JSON.parse(result.content);
+				Session.set('errorMessage', resultObj.message);
+				Router.go('error');
+			}
+			
 			var resultObj = JSON.parse(result.content);
 
 			// Add first object to collection
@@ -37,6 +41,8 @@ DetailController = ApplicationController.extend({
 
 			// Loading done
 			$("#loader").removeClass("loader--show");
+		} else {
+			Router.go('error');
 		}
 	},
 

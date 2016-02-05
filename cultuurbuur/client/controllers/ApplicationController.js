@@ -20,7 +20,8 @@ ApplicationController = RouteController.extend({
 			}.bind(this));
 
 		} catch (e) {
-			console.log(e);
+			Session.set('errorMessage', e);
+			Router.go('error');
 		}
 	},
 	getCyclesById:function(id) {
@@ -34,7 +35,8 @@ ApplicationController = RouteController.extend({
 			}.bind(this));
 
 		} catch (e) {
-			console.log(e);
+			Session.set('errorMessage', e);
+			Router.go('error');
 		}
 	}
 });

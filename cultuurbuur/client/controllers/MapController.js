@@ -34,13 +34,16 @@ MapController = ApplicationController.extend({
 	*/
 
 	requestCompleteHandler: function (error, result) {
-		
-		// Error handling
-		if(error){
-			console.log(error);
-		}
 
 		if(result) {
+			
+			// Error handling
+			if(result.statusCode == 400) {
+				var resultObj = JSON.parse(result.content);
+				Session.set('errorMessage', resultObj.message);
+				Router.go('error');
+			}
+
 			var resultObj = JSON.parse(result.content);
 
 			// if there is no coordinates
@@ -56,6 +59,8 @@ MapController = ApplicationController.extend({
 
 			// Load map
 			this.loadMap();
+		} else {
+			Router.go('error');
 		}
 	},
 

@@ -35,13 +35,15 @@ ListController = ApplicationController.extend({
 	*/
 
 	requestCompleteHandler: function (error, result) {
-		
-		// Error handling
-		if(error){
-			console.log(error);
-		}
 
 		if(result) {
+
+			// Error handling
+			if(result.statusCode == 400) {
+				var resultObj = JSON.parse(result.content);
+				Session.set('errorMessage', resultObj.message);
+				Router.go('error');
+			}
 
 			var resultObj = JSON.parse(result.content);
 
@@ -52,6 +54,8 @@ ListController = ApplicationController.extend({
 
 			// Loading done
 			$("#loader").removeClass("loader--show");
+		} else {
+			Router.go('error');
 		}
 	},
 
