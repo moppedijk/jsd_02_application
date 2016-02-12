@@ -9,13 +9,7 @@
 
 	&__li {
 		float: left;
-
-		&:after {
-			content: "|";
-			padding: 0px 15px;
-			font-size: 13px;
-			line-height: 26px;
-		}
+		padding-right: 20px;
 
 		a {
 			background-color: #000;

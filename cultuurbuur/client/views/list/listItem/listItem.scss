@@ -72,3 +72,11 @@
 		padding-right: 15px;
 	}
 }
+
+@media (max-width: 640px) {
+	.listitem {
+		width: 90%;
+		padding-left: 5%;
+		padding-right: 5%;
+	}
+}

@@ -12,15 +12,7 @@ $color-dark: #595241;
 	width: 100%;
 	max-width: 400px;
 	min-height: 300px;
-
-	position: absolute;
-	z-index: 3;
-
-	left: 50%;
-	top: 50%;
-	
-	margin-left: -200px;
-	margin-top: -200px;
+	margin: 0 auto;
 
 	&__title {
 		padding: 20px;
@@ -34,6 +26,9 @@ $color-dark: #595241;
 	&__form {
 		padding: 20px;
 		background-color: $color-extra;
+
+		margin-left: 20px;
+		margin-right: 20px;
 	}
 
 	&--animatein {

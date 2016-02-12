@@ -31,6 +31,16 @@ p {
 	margin: 0;
 }
 
+.btn {
+	&__primary {
+		background-color: #000;
+	    color: #fff;
+	    padding: 5px 15px;
+	    float: left;
+	    text-decoration: none;
+	}
+}
+
 // Layout 
 
 .layout {
@@ -39,6 +49,10 @@ p {
 		width: 100%;
 		position: fixed;
 		bottom: 0;
+	}
+
+	&__content {
+		position: relative;
 	}
 }
 
@@ -79,7 +93,55 @@ p {
 	}
 }
 
+.content {
+	&__header {
+		overflow: hidden;
+		padding-bottom: 20px;
+		padding-left: 20px;
+		padding-right: 20px;
+		border-bottom: solid 1px #000;
+	}
 
+	&__wrap {
+		max-width: 940px;
+		margin: 0 auto;
+		margin-bottom: 60px;
+	}
 
+	&__breadcrumb {
+		float: left;
+	}
 
+	&__options {
+		float: right;
 
+		a {
+			text-decoration: none;
+			padding: 5px 15px;
+			color: #000;
+			float: right;
+		}
+	}
+}
+
+@media (max-width: 640px) {
+	.content {
+		&__options {
+			width: 100%;
+			float: left;
+			padding-top: 20px;
+			border-top: solid 1px #000;
+
+			a {
+				float: left;
+			}
+		}
+		&__breadcrumb {
+			padding-bottom: 25px;
+		}
+	}
+}
+
+.clearfix {
+	clear: both;
+}

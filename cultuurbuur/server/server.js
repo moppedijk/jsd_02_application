@@ -68,7 +68,7 @@ Router.route( "/api/cycles", { where: "server" } ).get( function() {
 			response.end();
 		} else {
 			errorResponse({
-				message: "Something went wrong, " + params.city + " not found!";
+				message: "Something went wrong, " + params.city + " not found!"
 			});
 		};
 	};
@@ -153,7 +153,7 @@ Router.route( "/api/cycles/:id", { where: "server" } ).get( function() {
 			response.end();
 		} else {
 			errorResponse({
-				message: "Something went wrong, no match with id: " + cycleId + " found";
+				message: "Something went wrong, no match with id: " + cycleId + " found"
 			});
 		};
 	};
@@ -243,7 +243,30 @@ function refactorObjectKeys (result) {
 
 		// Openingstijden
 		if (result[i].Openingstijden) {
-			cycleObj.openinghours = result[i].Openingstijden;
+			var array = [];
+			var obj = result[i].Openingstijden;
+
+			for (var p in obj) {
+				if( obj.hasOwnProperty(p) ) {
+					var object = obj[p];
+					var open = object.Open;
+					var closed = object.Dicht;
+
+					if(!open)
+						open = "Niet beschikbaar"
+					if(!closed)
+						closed = "Niet beschikbaar"
+
+					array.push({
+						dayName: p,
+						dayOpen: open,
+						dayClose: closed
+					});
+				} 
+			}
+
+			cycleObj.openinghours = array;
+
 		} else {
 			cycleObj.openinghours = false;
 		}

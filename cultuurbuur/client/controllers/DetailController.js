@@ -32,6 +32,8 @@ DetailController = ApplicationController.extend({
 			
 			var resultObj = JSON.parse(result.content);
 
+			console.log(resultObj);
+
 			// Add first object to collection
 			CyclesCollection._collection.insert(resultObj[0]);
 
