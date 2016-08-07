@@ -1,17 +1,21 @@
 <template name="list">
-	<div class="list list__content">
-		<div class="content__header">
-			<div class="content__breadcrumb">
-				{{> breadcrumb}}
+	<div class="layout__content">
+		<div class="list list__content">
+			<div class="content__header">
+				<div class="content__breadcrumb">
+					{{> breadcrumb}}
+				</div>
+				<div class="content__options">
+					{{> filterOptions}}
+				</div>
 			</div>
-			<div class="content__options">
-				{{> filterOptions}}
+			<div class="content__wrap">
+				<div class="list__wrap">
+					{{#each cycles}}
+						{{> listItem}}
+					{{/each}}
+				</div>
 			</div>
-		</div>
-		<div class="content__wrap">
-			{{#each cycles}}
-				{{> listItem}}
-			{{/each}}
 		</div>
 	</div>
 </template>

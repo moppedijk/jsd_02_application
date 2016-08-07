@@ -1,19 +1,36 @@
+$color-outstanding: #8A0917;
+$color-light: #FFFFFF;
+$color-simple: #B8AE9C;
+$color-extra: #ACCFCC;
+$color-dark: #595241;
+
 .listitem {
 	width: 70%;
 	margin: 0 auto;
 	padding: 20px;
-	border-bottom: solid 1px #000;
 	overflow: hidden;
-	opacity: 0;
-	transform: scaleY(.70);
 
-	transition-property: opacity, margin-top, scaleY;
-	transition-duration: .2s;
-	transition-timing-function: ease-in-out;
+	border-radius: 3px;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 1);
+	background-color: rgba(255,255,255, .8);
+	border-bottom: 4px solid #1c1c1c;
 
-	&--animatein {
-		opacity: 1;
-		transform: scaleY(1);
+	margin-bottom: 10px;
+	
+	// opacity: 0;
+	// transform: scaleY(.70);
+
+	// transition-property: opacity, margin-top, scaleY;
+	// transition-duration: .2s;
+	// transition-timing-function: ease-in-out;
+
+	// &--animatein {
+	// 	opacity: 1;
+	// 	transform: scaleY(1);
+	// }
+
+	&__wrap {
+		padding-top: 20px;
 	}
 
 	&__top {
@@ -23,6 +40,7 @@
 	&__title {
 		width: 70%;
 		float: left;
+		color: $color-outstanding;
 	}
 
 	&__openinghours {
@@ -47,16 +65,6 @@
 
 	&__link {
 		padding: 5px;
-
-		a {
-			background-color: #000;
-			color: #fff;
-			width: 100%;
-			text-align: center;
-			display: inline-block;
-			padding: 15px 0px;
-			text-decoration: none;
-		}
 	}
 
 	&__description {
@@ -75,8 +83,11 @@
 
 @media (max-width: 640px) {
 	.listitem {
-		width: 90%;
+		width: 80%;
 		padding-left: 5%;
 		padding-right: 5%;
+		margin-right: 5%;
+		margin-left: 5%;
 	}
+
 }

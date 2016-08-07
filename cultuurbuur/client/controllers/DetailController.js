@@ -6,15 +6,24 @@ DetailController = ApplicationController.extend({
 	// Calls venue template with name "venue" for the layout
 	template: 'detail',
 
-	data: function() {
-		return CyclesCollection.find({});
+	data: function () {
+		return CyclesCollection._collection.findOne({"id": this.params.id});
 	},
 
-	onBeforeAction: function () {
+	onRun: function () {
 		// Show loader
 		$("#loader").addClass("loader--show");
 
-		this.getCyclesById(this.params.id);
+		console.log("onRun");
+
+		var data = CyclesCollection._collection.findOne({"id": this.params.id});
+
+		if(data) {
+			$("#loader").removeClass("loader--show");
+			this.action();
+		}else {
+			this.getCyclesById(this.params.id);
+		}
 
 		// Go to next rendering phase
 		this.next();
@@ -32,14 +41,10 @@ DetailController = ApplicationController.extend({
 			
 			var resultObj = JSON.parse(result.content);
 
-			console.log(resultObj);
+			CyclesCollection._collection.remove({});
 
 			// Add first object to collection
 			CyclesCollection._collection.insert(resultObj[0]);
-
-			if(!Session.get('inputSearch')) {
-				Session.set('inputSearch', resultObj[0].city.toLowerCase());
-			}
 
 			// Loading done
 			$("#loader").removeClass("loader--show");
@@ -52,8 +57,4 @@ DetailController = ApplicationController.extend({
 	action: function() {
 		this.render();
 	},
-
-	onStop: function () {
-		CyclesCollection._collection.remove({});
-	}
 });

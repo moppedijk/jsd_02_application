@@ -1,102 +1,104 @@
 <template name="detail">
-	<div class="detail">
-		<div class="content__header">
-			<div class="content__breadcrumb">
-				{{> breadcrumb}}
-			</div>
-			<div class="content__options">
-				{{> filterOptions}}
-			</div>
-		</div>
-		<div class="content__wrap">
-			{{#each cycles}}
-				<div class="detail__title">
-					<h1>{{name}}</h1>
+	<div class="layout__content">
+		<div class="detail">
+			<div class="content__header">
+				<div class="content__breadcrumb">
+					{{> breadcrumb}}
 				</div>
-				<div class="detail__content">
-					<div class="detail__location">
+				<div class="content__options">
+					{{> filterOptions}}
+				</div>
+			</div>
+			<div id="detailContent" class="content__wrap">
+				<div class="detail__wrap">
+					<div class="detail__title">
+						<h1>{{name}}</h1>
+					</div>
+					<div class="detail__content">
+						<div class="detail__location">
 
-						{{#if street}}
-							<p>{{street}}</p>
-						{{/if}}
-
-						<p>
-							{{#if zipcode}}
-								{{zipcode}}
+							{{#if street}}
+								<p>{{street}}</p>
 							{{/if}}
-							{{#if city}}
-								{{city}}
-							{{/if}}
-						</p>
 
-						{{#if homepage}}
-							<div class="detail__homepage">
-								<p><a target="_blank" class="btn btn--primary" href="{{homepage}}" title="Link naar meer informatie">Link naar meer informatie</a></p>
+							<p>
+								{{#if zipcode}}
+									{{zipcode}}
+								{{/if}}
+								{{#if city}}
+									{{city}}
+								{{/if}}
+							</p>
+
+							{{#if homepage}}
+								<div class="detail__homepage">
+									<p><a target="_blank" class="btn btn--primary" href="{{homepage}}" title="Link naar meer informatie">Link naar meer informatie</a></p>
+								</div>
+							{{/if}}
+						</div>
+
+						<div class="detail__aditional">
+
+							{{#if administrator}}
+								<p>administrator: {{administrator}}</p>
+							{{/if}}
+							
+							{{#if administratorContact}}
+								<p>administratorContact: {{administratorContact}}</p>
+							{{/if}}
+
+							{{#if capacityBike}}
+								<p>capacityBike: {{capacityBike}}</p>
+							{{/if}}
+
+							{{#if capacityTotal}}
+								<p>capacityTotal: {{capacityTotal}}</p>
+							{{/if}}
+
+							{{#if congregation}}
+								<p>congregation: {{congregation}}</p>
+							{{/if}}
+
+							{{#if stationHousing}}
+								<p>stationHousing: {{stationHousing}}</p>
+							{{/if}}
+
+							{{#if accesControl}}
+								<p>accesControl: {{accesControl}}</p>
+							{{/if}}
+
+							{{#if referral}}
+								<p>referral: {{referral}}</p>
+							{{/if}}
+
+							{{#if services}}
+								<p>services: {{services}}</p>
+							{{/if}}
+
+						</div>
+					</div>
+					<div class="detail__aside">
+						
+						{{#if type}}
+							<div class="detail__type">
+								<p>{{type}}</p>
 							</div>
 						{{/if}}
-					</div>
-
-					<div class="detail__aditional">
-
-						{{#if administrator}}
-							<p>administrator: {{administrator}}</p>
-						{{/if}}
 						
-						{{#if administratorContact}}
-							<p>administratorContact: {{administratorContact}}</p>
-						{{/if}}
-
-						{{#if capacityBike}}
-							<p>capacityBike: {{capacityBike}}</p>
-						{{/if}}
-
-						{{#if capacityTotal}}
-							<p>capacityTotal: {{capacityTotal}}</p>
-						{{/if}}
-
-						{{#if congregation}}
-							<p>congregation: {{congregation}}</p>
-						{{/if}}
-
-						{{#if stationHousing}}
-							<p>stationHousing: {{stationHousing}}</p>
-						{{/if}}
-
-						{{#if accesControl}}
-							<p>accesControl: {{accesControl}}</p>
-						{{/if}}
-
-						{{#if referral}}
-							<p>referral: {{referral}}</p>
-						{{/if}}
-
-						{{#if services}}
-							<p>services: {{services}}</p>
-						{{/if}}
-
-					</div>
-				</div>
-				<div class="detail__aside">
-					
-					{{#if type}}
-						<div class="detail__type">
-							<p>{{type}}</p>
+						<div class="detail__subtitle">
+							<h2>Tijden</h2>
 						</div>
-					{{/if}}
-					
-					<div class="detail__subtitle">
-						<h2>Tijden</h2>
+						{{#each openinghours}}
+						<div class="detail__openinghours">
+							<div class="detail__openinghours-name">{{dayName}}</div>
+							<div class="detail__openinghours-time">{{dayOpen}} - {{dayClose}}</div>
+							<div class="clearfix"></div>
+						</div>
+						{{/each}}
 					</div>
-					{{#each openinghours}}
-					<div class="detail__openinghours">
-						<div class="detail__openinghours-name">{{dayName}}</div>
-						<div class="detail__openinghours-time">{{dayOpen}} - {{dayClose}}</div>
-						<div class="clearfix"></div>
-					</div>
-					{{/each}}
+					<div class="clearfix"></div>
 				</div>
-				<div class="clearfix"></div>
-			{{/each}}
+			</div>
 		</div>
 	</div>
 </template>

@@ -1,7 +1,10 @@
 <template name="filterOptions">
-	<div class="filterOptions">
-		<a href="/list?search={{inputSearch}}">List</a>
-		<a href="/map?search={{inputSearch}}">Map</a>
-		<div class="clearfix"></div>
+	<div class="filteroptions">
+		<div class="filteroptions__link{{#if isList}} filteroptions__link--active{{/if}}">
+			<a href="/list?search={{inputSearch}}"><i class="fa fa-list-ul" aria-hidden="true"></i> List</a>
+		</div>
+		<div class="filteroptions__link{{#if isMap}} filteroptions__link--active{{/if}}">
+			<a href="/map?search={{inputSearch}}"><i class="fa fa-map-marker" aria-hidden="true"></i> Map</a>
+		</div>
 	</div>
 </template>

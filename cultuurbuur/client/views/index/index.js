@@ -40,6 +40,7 @@ Template.index.showError = function(msg, template) {
 	Session.set('inputSearchError', msg);
 
 	$(el).addClass(visibleClass);
+	this.$('#inputSearch').focus();
 }
 
 // Submit form event

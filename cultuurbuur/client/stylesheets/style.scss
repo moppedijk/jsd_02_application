@@ -1,7 +1,16 @@
+$color-outstanding: #8A0917;
+$color-light: #FFFFFF;
+$color-simple: #B8AE9C;
+$color-extra: #ACCFCC;
+$color-dark: #595241;
+
 body {
 	// font-family: 'Lora', serif;
 	font-family: 'Roboto', sans-serif;
 	font-size: 14px;
+
+	-webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 // Reset
@@ -31,14 +40,9 @@ p {
 	margin: 0;
 }
 
-.btn {
-	&__primary {
-		background-color: #000;
-	    color: #fff;
-	    padding: 5px 15px;
-	    float: left;
-	    text-decoration: none;
-	}
+a {
+	color: $color-outstanding;
+	text-decoration: none;
 }
 
 // Layout 
@@ -51,8 +55,35 @@ p {
 		bottom: 0;
 	}
 
+	&__header {
+		position: relative;
+		z-index: 2;
+	}
+
 	&__content {
 		position: relative;
+	}
+
+	&__index {
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+
+		@media (max-width: 550px) {
+			position: relative;
+			width: auto;
+			height: auto;
+			padding-top: 20px;
+		}
+
+		@media (max-width: 480px) { 
+			padding-left: 5%;
+			padding-right: 5%;
+			padding-bottom: 40px;
+		}
 	}
 }
 
@@ -65,15 +96,16 @@ p {
 	position: absolute;
 	top: 0;
 	left: 0;
-	z-index: -1;
+	z-index: 4;
 	opacity: 0;
+	visibility: hidden;
 
 	transition-property: opacity;
 	transition-duration: .5s;
 	
 	&--show {
 		opacity: 1;
-		z-index: 1;
+		visibility: visible;
 	}
 
 	&__inner {
@@ -93,6 +125,22 @@ p {
 	}
 }
 
+.background {
+	position: fixed;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url(img/background.jpg);
+	background-size: cover;
+
+	@media (max-width: 640px) {
+		background-image: url(img/background-mobile.jpg);
+		background-size: 750px 1334px;
+		background-position:center top;
+	}
+}
+
 .content {
 	&__header {
 		overflow: hidden;
@@ -100,12 +148,21 @@ p {
 		padding-left: 20px;
 		padding-right: 20px;
 		border-bottom: solid 1px #000;
+		background-color: #fff;
+		z-index: 2;
+		position: relative;
 	}
 
 	&__wrap {
 		max-width: 940px;
 		margin: 0 auto;
 		margin-bottom: 60px;
+		z-index: 1;
+		position: relative;
+
+		&--hidden {
+			visibility: hidden;
+		}
 	}
 
 	&__breadcrumb {
@@ -114,13 +171,32 @@ p {
 
 	&__options {
 		float: right;
+	}
+}
 
-		a {
-			text-decoration: none;
-			padding: 5px 15px;
-			color: #000;
-			float: right;
-		}
+.btn {
+	background-color: $color-outstanding;
+    border: 1px solid darken($color-outstanding, 15%);
+    box-shadow: inset 0 -2px 0 0 darken($color-outstanding, 15%);
+    color: $color-light;
+    border-radius: 3px;
+
+	text-decoration: none;
+	font-weight: bold;
+	display: block;
+	text-align: center;
+
+	padding: 15px 0px;
+
+	&--large {		
+		font-size: 25px;
+		padding: 15px 20px;
+		text-transform: uppercase;
+	}
+	&--inline {
+		display: inline-block;
+		padding-left: 20px;
+		padding-right: 20px;
 	}
 }
 

@@ -1,15 +1,17 @@
 <template name="map">
-	<div class="map map__content">
-		<div class="content__header">
-			<div class="content__breadcrumb">
-				{{> breadcrumb}}
+	<div class="layout__content">
+		<div class="map map__content">
+			<div class="content__header">
+				<div class="content__breadcrumb">
+					{{> breadcrumb}}
+				</div>
+				<div class="content__options">
+					{{> filterOptions}}
+				</div>
 			</div>
-			<div class="content__options">
-				{{> filterOptions}}
+			<div class="map__container">
+				{{> googleMap name="map" options=mapOptions}}
 			</div>
-		</div>
-		<div class="map__container">
-			{{> googleMap name="map" options=mapOptions}}
 		</div>
 	</div>
 </template>

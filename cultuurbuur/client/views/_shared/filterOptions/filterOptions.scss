@@ -1,3 +1,26 @@
-.filterOptions {
+$color-outstanding: #8A0917;
+$color-light: #FFFFFF;
+$color-simple: #B8AE9C;
+$color-extra: #ACCFCC;
+$color-dark: #595241;
+
+.filteroptions {
+	overflow: hidden;
 	
+	&__link {
+		height: 48px;
+		line-height: 48px;
+		text-decoration: none;
+		float: right;
+		margin-left: 20px;
+
+		a {
+			color: #000;
+		}
+
+		&--active {
+			border-bottom: solid 2px $color-outstanding;
+			height: 46px;
+		}
+	}
 }

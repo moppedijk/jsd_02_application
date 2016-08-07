@@ -1,3 +1,7 @@
+var _localData = "http://api.fietsenstallingen.local/veiligstalling_small.xml";
+var _remoteData = "http://www.veiligstallen.nl/veiligstallen.xml";
+var _development = false;
+
 /* ==========================================================================
  *
  *	Get Cycles server route
@@ -10,9 +14,14 @@ Router.route( "/api/cycles", { where: "server" } ).get( function() {
 	var params = this.params.query;
 	var request = this.request;
 	var response = this.response;
+	var url = _remoteData;
+
+	if(_development) {
+		url = _localData;
+	}
 
 	try {
-		HTTP.get( 'http://www.veiligstallen.nl/veiligstallen.xml', {}, onFetchCyclesComplete );
+		HTTP.get( url, {}, onFetchCyclesComplete );
 	} catch ( error ) {
 		errorResponse({
 			message: "Something went wrong...",
@@ -99,8 +108,14 @@ Router.route( "/api/cycles/:id", { where: "server" } ).get( function() {
 	var request = this.request;
 	var response = this.response;
 
+	var url = _remoteData;
+
+	if(_development) {
+		url = _localData;
+	}
+
 	try {
-		HTTP.get( 'http://www.veiligstallen.nl/veiligstallen.xml', {}, onFetchCyclesComplete );
+		HTTP.get( url, {}, onFetchCyclesComplete );
 	} catch ( error ) {
 		errorResponse({
 			message: "Something went wrong...",

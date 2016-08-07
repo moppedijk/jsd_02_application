@@ -1,7 +1,32 @@
+$color-outstanding: #8A0917;
+$color-light: #FFFFFF;
+$color-simple: #B8AE9C;
+$color-extra: #ACCFCC;
+$color-dark: #595241;
+
 /* =====================================
 	Error
 	================================== */
 
 .error {
-	
+	&__title {
+		color: $color-outstanding;
+		padding-bottom: 5px;
+	}
+	&__content {
+		box-shadow: 0px 0px 20px rgba(0, 0, 0, 1);
+		background-color: rgba(255,255,255, .8);
+		border-bottom: 4px solid #1c1c1c;
+		margin:20px auto;
+
+		width: 60%;
+		padding: 20px 5%;
+
+		p {
+			word-break: break-all;
+		}
+	}
+	&__button {
+		padding-top: 20px;
+	}
 }

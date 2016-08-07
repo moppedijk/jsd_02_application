@@ -1,24 +1,35 @@
 <template name="index">
-	<div id="index" class="index">
-		<div class="index__title">
-			<h2>{{title}}</h2>
-		</div>
-		<div class="index__form">
-			<div class="form">
-				<div class="form__error" id="error" visible-class="form__error--show">
-					<div class="form__error-message" id="errorMessage">
-						<p>{{errorMessage}}</p>
+	<div class="layout__index">
+		<div id="index" class="index">
+			<div class="index__title">
+				<h2>{{title}}</h2>
+			</div>
+			<div class="index__form">
+				<div class="form">
+					<div class="form__error" id="error" visible-class="form__error--show">
+						<div class="form__error-message" id="errorMessage">
+							<p><i class="fa fa-exclamation-circle" aria-hidden="true"></i> {{errorMessage}}</p>
+						</div>
 					</div>
-				</div>
-				<div class="form__inputholder">
-					<input class="form__input" id="inputSearch" placeholder="{{placeholder}}" tabindex="1"/>
-				</div>
-				<div class="form__radiogroup">
- 					<label><input type="radio" name="searchType" typeId="list" checked="checked"> Lijst</label>
- 					<label><input type="radio" name="searchType" typeId="map"> Map</label>
- 				</div>
-				<div class="form__btnholder">
-					<a class="form__btn" id="btnSubmit" href="javascript:void(0);" tabindex="4">Klik en vind!</a>
+					<div class="form__inputholder">
+						<input class="form__input" id="inputSearch" placeholder="{{placeholder}}" tabindex="1"/>
+						<div class="form__tooltip">
+							<p>Er kan alleen gezocht worden op steden! Niet op adres of postcode.</p>
+						</div>
+					</div>
+					<div class="form__radiogroup">
+						<div class="form__radio form__radio--list">
+		 					<input type="radio" name="searchType" typeId="list" checked="checked" id="searchTypeList">
+		 					<label for="searchTypeList">Lijst</label>
+	 					</div>
+	 					<div class="form__radio form__radio--map">
+		 					<input type="radio" name="searchType" typeId="map" id="searchTypeMap">
+		 					<label for="searchTypeMap">Map</label>
+	 					</div>
+	 				</div>
+					<div class="form__btnholder">
+						<a class="btn btn--large" id="btnSubmit" href="javascript:void(0);" tabindex="4"><i class="fa fa-bicycle" aria-hidden="true"></i></a>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -54,3 +54,10 @@ Router.route('error', {
 	name: 'error',
 	controller: 'ErrorController'
 });
+
+Meteor.startup(function () {
+	// Set initial page on startup
+	// This is a little hacky
+	var patharray = window.location.pathname.split( '/' );
+	Session.set('initialPage', patharray[1]);
+});

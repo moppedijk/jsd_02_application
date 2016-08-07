@@ -12,7 +12,7 @@ ErrorController = RouteController.extend({
 	// Calls index template with name "index" for the layout
 	template: 'error',
 
-	onBeforeAction: function () {
+	onRun: function () {
 		// Show loader
 		$("#loader").addClass("loader--show");
 

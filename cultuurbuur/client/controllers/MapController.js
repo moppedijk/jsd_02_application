@@ -18,7 +18,7 @@ MapController = ApplicationController.extend({
 	 * 	OnBeforeAction
 	*/
 	
-	onBeforeAction: function () {
+	onRun: function () {
 		// Show loader
 		$("#loader").addClass("loader--show");
 
@@ -27,6 +27,10 @@ MapController = ApplicationController.extend({
 
 		// Go to next rendering phase
 		this.next();
+	},
+
+	dataRequestCompleteHandler: function () {
+		this.loadMap();
 	},
 
 	/**
@@ -45,10 +49,6 @@ MapController = ApplicationController.extend({
 			}
 
 			var resultObj = JSON.parse(result.content);
-
-			// if there is no coordinates
-			// set latng in session
-			Session.set('latLng', resultObj[0].coordinates);
 
 			// Push items in local collection
 			for(var i = 0; i < resultObj.length; i++) {
@@ -156,10 +156,6 @@ MapController = ApplicationController.extend({
 	},
 
 	onStop: function () {
-		// delete session
-		delete Session.keys['latLng']
-		// empty collection
-		CyclesCollection._collection.remove({});
-		// unload google map
+		// Unload google map
 	}
 });

@@ -1,11 +1,13 @@
 # Javascript Driven Development - Web application
 ## Synopsis
-Web application written in Meteorjs with connection with Art Holland API
+Web application written in Meteorjs with connection with bicycle API.
 ## Code Example
 
 ## Motivation
 
 ## Installation
+
+meteor add francocatena:compass
 
 ## API Reference
 

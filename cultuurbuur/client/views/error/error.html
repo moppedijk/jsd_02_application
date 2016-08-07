@@ -1,15 +1,25 @@
 <template name="error">
-	<div class="error error__content">
-		<div class="content__header">
-			<div class="content__breadcrumb">
-				{{> breadcrumb}}
+	<div class="layout__content">
+		<div class="error">
+			<div class="content__header">
+				<div class="content__breadcrumb">
+					{{> breadcrumb}}
+				</div>
 			</div>
-		</div>
-		<div class="content__wrap">
-			<div class="error__title">
-				<h1>Error</h1>
-				<p>{{message}}</p>
-				<p>Er is iets mis gegaan... <a title="Take me out of here" href="/">Terug</a></p>
+			<div class="content__wrap">
+				<div class="error__content">
+					<div class="error__title">
+						<h1>Oops!</h1>
+					</div>
+					<div>
+						<p>{{message}}</p>
+						<p>Er is iets niet helemaal goed gegaan...</p>
+					</div>
+					<div class="error__button">
+						<a class="btn btn--inline" title="Take me out of here" href="/">Terug</a>
+					</div>
+				</div>
+				<div class="clearfix"></div>
 			</div>
 		</div>
 	</div>

@@ -19,15 +19,19 @@ ListController = ApplicationController.extend({
 	 * 	OnBeforeAction
 	*/
 	
-	onBeforeAction: function () {
+	onRun: function () {
 		// Show loader
 		$("#loader").addClass("loader--show");
 
-		// in ApplicationController
 		this.getCyclesByLocality(this.params.query.search);
-
-		// Go to next rendering phase
 		this.next();
+	},
+	
+
+	dataRequestCompleteHandler: function () {
+		this.render();
+
+		$("#loader").removeClass("loader--show");
 	},
 
 	/**
@@ -47,7 +51,7 @@ ListController = ApplicationController.extend({
 
 			var resultObj = JSON.parse(result.content);
 
-			// Push items in local collection
+			// Push new items in local collection
 			for(var i = 0; i < resultObj.length; i++) {
 				CyclesCollection._collection.insert(resultObj[i]);
 			}
@@ -68,6 +72,6 @@ ListController = ApplicationController.extend({
 	},
 
 	onStop: function () {
-		CyclesCollection._collection.remove({});
+		
 	}
 });
