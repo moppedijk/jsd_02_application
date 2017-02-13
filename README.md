@@ -1,17 +1,2 @@
-# Javascript Driven Development - Web application
-## Synopsis
-Web application written in Meteorjs with connection with Art Holland API
-## Code Example
-
-## Motivation
-
-## Installation
-
-## API Reference
-
-## Tests
-
-## Contributors
-
-## Licence
-GNU General Public Licence 2.0
+# Web application
+Check the `reduce-load` branch for more information: [link] (https://github.com/moppedijk/jsd_02_application/tree/reduce-load/fietsenstallingen)
