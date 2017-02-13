@@ -1,0 +1,258 @@
+@import "{francocatena:compass}/compass";
+
+$color-outstanding: #8A0917;
+$color-light: #FFFFFF;
+$color-simple: #B8AE9C;
+$color-extra: #ACCFCC;
+$color-dark: #595241;
+
+/* =====================================
+	INDEX
+	================================== */
+
+.index {
+	width: 400px;
+	min-height: 300px;
+	// margin: 0 auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -200px;
+	margin-top: -150px;
+	border-radius: 3px;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 1);
+	background-color: rgba(255,255,255, .8);
+	border-bottom: 4px solid #1c1c1c;
+
+	@media (max-width: 550px) {
+		position: relative;
+		top: 0;
+		left: 0;
+		margin-left: 0;
+		margin-top: 0;
+		margin: 0 auto;
+	}
+
+	@media (max-width: 480px) {
+		width: 100%;
+		height: auto;
+	}
+
+	&__title {
+		padding: 40px 20px 20px;
+
+		h2 {
+			color: $color-outstanding;
+			width: 75%;
+		}
+	}
+
+	&__form {
+		padding: 0px 20px 20px;
+	}
+
+	&--animatein {
+		-webkit-animation: bounce .5s ease-in-out;
+	    -moz-animation: bounce .5s ease-in-out;
+	    -o-animation: bounce .5s ease-in-out;
+	    animation: bounce .5s ease-in-out;
+	}
+}
+
+/* =====================================
+	FORM
+	================================== */
+
+.form {
+	&__inputholder {
+		padding: 15px 20px;
+		background-color: $color-light;
+		color: $color-outstanding;
+		font-size: 16px;
+		position: relative;
+
+		input:focus + .form__tooltip {
+			display: block;
+		}
+	}
+
+	&__tooltip {
+		position: absolute;
+		left: 110%;
+		top: 0;
+		width: 150px;
+		background-color: #fff;
+		padding: 15px 10px;
+		font-size: 12px;
+		// display: block;
+		display: none;
+		border-radius: 3px;
+		box-shadow: 0px 0px 20px rgba(0, 0, 0, 1);
+
+		&:after {
+			content: '';
+		    position: absolute;
+		    top: 38%;
+		    left: 0;
+		    margin-top: -8px;
+		    margin-left: -8px;
+		    width: 0;
+		    height: 0;
+		    border-top: 8px solid transparent;
+		    border-right: 8px solid #fff;
+		    border-bottom: 8px solid transparent;
+
+		    @media (max-width: 800px) { 
+				top: 100%;
+				left: 20%;
+				margin-top: 0px;
+				border-top: 8px solid #fff;
+			    border-right: 8px solid transparent;
+			    border-left: 8px solid transparent;
+		    }
+		}
+
+		@media (max-width: 800px) {
+			top: auto;
+    		left: 75%;
+    		bottom: 132%;
+    		box-shadow: 0px 0px 20px rgba(0, 0, 0, .6);
+		}
+
+		@media (max-width: 550px) { 
+			width: 30%;
+		}
+	}
+
+	&__error {
+		display: none;
+
+		&-message {
+			padding: 15px 20px;
+			margin-bottom: 20px;
+			background-color: $color-outstanding;
+			color: $color-light;
+			font-weight: 500;
+		}
+		&--show {
+			display: block;
+		}
+	}
+
+	&__hl {
+		border-bottom: solid 1px $color-dark;
+		text-align: center;
+		color: $color-light;
+		padding: 15px 20px;
+		width: 75%;
+		margin: 0 auto;
+		font-weight: 500;
+		font-style: italic;
+		font-size: 16px;
+	}
+
+	&__label {
+		padding: 15px 20px;
+		color: $color-light;
+
+		&--gps {
+			text-align: center;
+		}
+	}
+
+	&__radiogroup {
+		color: $color-light;
+		overflow: hidden;
+		padding: 20px 20px 0px;
+
+		label {
+			width: 50%;
+			float: left;
+		}
+	}
+
+	&__radio {
+		min-height: 22px;
+		width: 50%;
+		float: left;
+		text-transform: uppercase;
+		font-weight: bold;
+
+		&--list input[type="radio"]+label {
+	        background-image: url("img/checkbox-list.svg");
+		}
+
+		&--map input[type="radio"]+label {
+	        background-image: url("img/checkbox-map.svg");
+		}
+
+	    input[type="checkbox"],
+	    input[type="radio"] {
+	        display: none;
+	        transition: background-position 0.5s ease;
+	    }
+
+	    input[type="checkbox"]+label, 
+	    input[type="radio"]+label {
+	        display:inline-block;
+	        background-size: 22px 66px;
+	        background-repeat: no-repeat;
+	        background-position: top left;
+	        
+	        height: 22px - 5px;
+	        padding-left: 30px;
+	        padding-top: 5px;
+	        cursor: pointer;
+	        color: #000;
+	    }
+
+	    input[type="checkbox"]+ label:hover,
+	    input[type="radio"] + label:hover {
+	        background-position: center left;
+	        color: #000;
+	    }
+	    
+	    input[type="checkbox"]:checked + label,
+	    input[type="checkbox"]:checked + label:hover,
+	    input[type="radio"]:checked + label,
+	    input[type="radio"]:checked + label:hover{
+	        background-position: bottom left;
+	        color: #8A0917;
+	    }
+
+	    /** ie8 fixes **/
+	    .ie8 &{
+	        input[type="checkbox"],
+	        input[type="radio"] {
+	            display:inline-block;
+	        }
+	        input[type="checkbox"]+label, 
+	        input[type="radio"]+label {  
+	            background:none;
+	            padding-left:5px;
+	        }
+	    }
+	}
+
+	&__btnholder {
+		text-align: right;
+		padding-top: 20px;
+	}
+}
+
+@include keyframes(bounce) {
+   	0% { 
+   		opacity:0; 
+   		transform:translateY(-400px); 
+   	}
+   	60% { 
+   		opacity:1; 
+   		transform:translateY(25px); 
+   	}
+   	80% { 
+   		transform:translateY(-8px); 
+   	}
+   	100% { 
+   		transform:translateY(0); 
+   	}
+}

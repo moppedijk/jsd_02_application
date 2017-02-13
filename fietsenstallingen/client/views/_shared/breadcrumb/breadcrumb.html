@@ -1,0 +1,12 @@
+<template name="breadcrumb">
+	<div class="breadcrumb">
+		<div class="breadcrumb__button">
+			<a class="btn btn--inline" href="/" title="Zoeken"><i class="fa fa-search" aria-hidden="true"></i></a>
+		</div>
+		<div class="breadcrumb__ul">
+			{{#each listItems}}
+				<div class="breadcrumb__li">{{name}}</div>
+			{{/each}}
+		</div>
+	</div>
+</template>

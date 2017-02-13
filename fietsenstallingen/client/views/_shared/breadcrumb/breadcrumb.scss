@@ -1,0 +1,26 @@
+.breadcrumb {
+	overflow: hidden;
+	
+	&__button {
+		float: left;
+	}
+	&__ul {
+		height: 48px;
+		line-height: 48px;
+		float: left;
+		padding-left: 20px;
+	}
+	&__li {
+		float: left;
+		padding-right: 20px;
+		text-transform: capitalize;
+
+		a {
+			background-color: #000;
+			color: #fff;
+			padding: 5px 15px;
+			float: left;
+			text-decoration: none;
+		}
+	}
+}
