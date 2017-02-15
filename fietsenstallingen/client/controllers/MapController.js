@@ -69,7 +69,7 @@ MapController = ApplicationController.extend({
 		GoogleMaps.load({
 			// add load options
 			v: '3', 
-			key: 'AIzaSyCtKqFdKMD9Fn99HVDIudRbE3pQMIFbKm8',
+			key: 'AIzaSyAC0phT6tjKt8tU8AB-u0ilKr8O5uRC68I',
 			libraries: 'geometry, places'
 		});
 

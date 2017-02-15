@@ -18,7 +18,7 @@ For code check the repository, I tried to write comments for every function.
 
 ## Motivation
 
-The motivation to use Meteorjs for the development of this web-application was because Meteorjs is more than just a framework. It takes over the whole development process which I used to structure myself. Integrations, task-runners etc.
+The motivation to use Meteorjs for the development of this web-application was because Meteorjs is more than just a framework. It takes over the whole development process which I used to structure myself. Integrations, task-runners are now handled by Meteorjs. Besides the framework I like to build small web-application with the use of open data.
 
 ## Installation
 
